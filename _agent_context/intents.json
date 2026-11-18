@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "flows": [
+    {
+      "path": "/intents/umfrage-anlegen",
+      "label": "Umfrage mit Terminen anlegen",
+      "description": "Umfrage mit Titel, Ort und mehreren Terminvorschlägen anlegen",
+      "file": "src/pages/intents/UmfrageAnlegenPage.tsx",
+      "summary": "/**\n * Umfrage anlegen — 3-Schritt-Wizard.\n * Steps: 1) Titel, Beschreibung, Ort → 2) Terminvorschläge mit Beginn und Ende erfassen → 3) Prüfen & speichern.\n * Reads: nichts (alles kommt vom Flow-Hook). Writes: umfragen (status „offen“), terminvorschlaege (einer pro Eintrag).\n * Composes: IntentWizardShell, Bound, ListEntries, StepNav, SummaryStep, SuccessStep.\n */",
+      "components": [
+        "Bound",
+        "IntentWizardShell",
+        "ListEntries",
+        "StepNav",
+        "SuccessStep",
+        "SummaryStep",
+        "WizardStep"
+      ],
+      "writes": []
+    },
+    {
+      "path": "/intents/umfrage-abschliessen",
+      "label": "Finalen Termin festlegen und schließen",
+      "description": "Finalen Termin aus den Terminvorschlägen wählen und die Umfrage schließen",
+      "file": "src/pages/intents/UmfrageAbschliessenPage.tsx",
+      "summary": "/**\n * Umfrage abschließen — 3-Schritt-Wizard.\n * Steps: 1) Offene Umfrage wählen → 2) Finalen Termin aus den Vorschlägen wählen → 3) Prüfen & schließen.\n * Reads: umfragen, terminvorschlaege. Writes: umfragen (finaler_termin, status=geschlossen via useUmfrageAbschliessenFlow).\n * Composes: IntentWizardShell, EntitySelectStep, StepNav, SummaryStep, SuccessStep.\n */",
+      "components": [
+        "EntitySelectStep",
+        "IntentWizardShell",
+        "StepNav",
+        "SuccessStep",
+        "SummaryStep",
+        "WizardStep"
+      ],
+      "writes": []
+    }
+  ],
+  "unregistered_pages": []
+}
