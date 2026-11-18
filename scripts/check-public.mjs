@@ -221,7 +221,9 @@ function checkDoorPerRecord(slug, src, endpoints, file, sink, frag) {
   }
   for (const w of written) {
     if (!w.entity || refs[w.entity] !== w.key) continue;
-    sink.push(`${file}:${w.line}: page '${slug}' writes '${w.entity}.${w.key}' — the record's write door PRESETS the reference to the '${door.entity}' (the platform answers 400 for a client that sends it); leave the field out of the form, values and link (EF-51)`);
+    // 0.0.571: a WARNING — the public client drops every preset key from the body before the POST (withDoors makes
+    // the reference a preset), so a page that names the field costs nothing; as an error it could cost the page
+    warnings.push(`${file}:${w.line}: page '${slug}' writes '${w.entity}.${w.key}' — the record's write door PRESETS the reference to the '${door.entity}'; the client leaves it out of the request, so leave it out of the form, values and link too (EF-51)`);
     break;
   }
   for (const key of [door.read_field, door.write_field].filter(Boolean)) {
@@ -252,7 +254,11 @@ function checkPollRate(slug, src, file, sink) {
 }
 // EF-14: a reference the page sets from its linked record's pointer is read fresh at send time
 function checkFreshPointer(slug, src, file, sink) {
-  const sets = planPageSets.get(slug) || [];
+  // EF-62d: the reference to the page's own link record is the door's (preset), and on a vote page
+  // the layer's block reads the parent fresh at every send — neither is the page's to check
+  if (/<OptionVote\b/.test(src) && planVote.has(slug)) return;
+  const doorRefs = new Set(Object.entries(planDoor.get(slug)?.refs || {}).map(([e, k]) => `${e}.${k}`));
+  const sets = (planPageSets.get(slug) || []).filter(x => !doorRefs.has(x));
   if (sets.length && !/\bfreshRef\(/.test(src)) {
     sink.push(`${file}: page '${slug}' sends ${sets.join(', ')}, which must be what the linked record points at WHEN the visitor sends — read it with freshRef(port, …) right before the create and refuse to send when it changed; a value loaded earlier goes to a question that is no longer open`);
   }

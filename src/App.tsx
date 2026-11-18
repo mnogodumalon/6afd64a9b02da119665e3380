@@ -18,8 +18,8 @@ const IntentFields = lazy(() => import('@/pages/IntentFields'));
 const IntentsAdmin = lazy(() => import('@/pages/IntentsAdmin'));
 const AppMap = lazy(() => import('@/pages/AppMap'));
 // <custom:imports>
-const IntentUmfrageAnlegenPage = lazy(() => import('@/pages/intents/UmfrageAnlegenPage'));
 import { DashboardSkeleton } from '@/components/DashboardStates';
+const IntentUmfrageAnlegenPage = lazy(() => import('@/pages/intents/UmfrageAnlegenPage'));
 const IntentUmfrageAbschliessenPage = lazy(() => import('@/pages/intents/UmfrageAbschliessenPage'));
 // </custom:imports>
 

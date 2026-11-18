@@ -111,7 +111,8 @@ export function OptionVote({ port, vote, parentId, draftKey, closed: closedProp,
     return Boolean(key && p.closedValues.includes(key));
   }, [vote.parent]);
   const closed = closedProp ?? isClosed(parent);
-  const finalId = parent && vote.parent?.finalField ? fieldRef(parent, vote.parent.finalField) : null;
+  // a decision counts only with its status (EF-62): an OPEN record that still carries a final option shows none
+  const finalId = closed && parent && vote.parent?.finalField ? fieldRef(parent, vote.parent.finalField) : null;
 
   const options = useMemo(() => {
     const ref = vote.option.parentRef;

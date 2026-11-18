@@ -383,7 +383,7 @@ export function AntwortenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="umfrage">{labelFor('umfrage')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="umfrage"
-          placeholder="Welche Umfrage?"
+          placeholder=""
           items={umfragenListAll.map(r => ({
             id: r.record_id,
             label: displayNameOf('umfragen', r.fields as Record<string, unknown>) || r.record_id,
@@ -403,7 +403,7 @@ export function AntwortenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="terminvorschlag">{labelFor('terminvorschlag')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="terminvorschlag"
-          placeholder="Welcher Terminvorschlag?"
+          placeholder=""
           items={((pid) => (pid ? terminvorschlaegeListAll.filter(r => extractRecordId(r.fields.umfrage) === pid) : terminvorschlaegeListAll))(extractRecordId(fields.umfrage)).map(r => ({
             id: r.record_id,
             label: displayNameOf('terminvorschlaege', r.fields as Record<string, unknown>) || r.record_id,
@@ -423,7 +423,7 @@ export function AntwortenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="teilnehmer_vorname">{labelFor('teilnehmer_vorname')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="teilnehmer_vorname"
-          placeholder="z. B. Anna"
+          placeholder=""
           value={fields.teilnehmer_vorname ?? ''}
           onChange={e => setFields(f => ({ ...f, teilnehmer_vorname: e.target.value }))}
           required
@@ -438,7 +438,7 @@ export function AntwortenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="teilnehmer_nachname">{labelFor('teilnehmer_nachname')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="teilnehmer_nachname"
-          placeholder="z. B. Müller"
+          placeholder=""
           value={fields.teilnehmer_nachname ?? ''}
           onChange={e => setFields(f => ({ ...f, teilnehmer_nachname: e.target.value }))}
           required
