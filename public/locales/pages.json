@@ -1,0 +1,30 @@
+{
+  "pages": {
+    "en": {
+      "Alle offenen Umfragen laufen — zuletzt: {0}.": "All open polls are running — latest: {0}.",
+      "Auf {0} hat noch niemand geantwortet.": "No one has responded to {0} yet.",
+      "Entscheidung offen": "Decision pending",
+      "Erste Umfrage anlegen": "Create first poll",
+      "Finaler Termin:": "Final date:",
+      "Geschlossen": "Closed",
+      "Ja": "Yes",
+      "Keine Umfrage in dieser Auswahl.": "No polls in this selection.",
+      "Lege deine erste Umfrage an und teile den Link mit den Teilnehmenden.": "Create your first poll and share the link with participants.",
+      "Neue Umfrage": "New poll",
+      "Nichts zu entscheiden.": "Nothing to decide.",
+      "Noch keine Antworten bei {0}.": "No responses yet for {0}.",
+      "Noch keine Terminvorschläge.": "No proposed dates yet.",
+      "Noch keine Umfrage — lege Titel, Ort und Terminvorschläge fest und teile den Link.": "No polls yet — set a title, location, and proposed dates and share the link.",
+      "Offen": "Open",
+      "Ohne Antwort": "No responses",
+      "Top-Termin festlegen": "Set top date",
+      "Umfrage schließen": "Close poll",
+      "Vielleicht": "Maybe",
+      "meiste Ja": "most Yes",
+      "{0} hat nur noch vergangene Termine.": "{0} only has past dates left.",
+      "{0} wartet auf deine Entscheidung.": "{0} is waiting for your decision.",
+      "— alle vorgeschlagenen Termine liegen in der Vergangenheit.": "— all proposed dates are in the past."
+    }
+  },
+  "v": 1
+}
